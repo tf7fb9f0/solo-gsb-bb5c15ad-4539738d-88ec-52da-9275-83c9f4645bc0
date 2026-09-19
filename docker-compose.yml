@@ -1,0 +1,8 @@
+services:
+  app:
+    build: .
+    image: timeline-constraint-checker
+    container_name: timeline-constraint-checker
+    ports:
+      - "8080:80"
+    restart: unless-stopped

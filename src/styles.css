@@ -1,0 +1,418 @@
+:root {
+  --bg: #f1f5f9;
+  --card: #ffffff;
+  --border: #e2e8f0;
+  --text: #0f172a;
+  --muted: #64748b;
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
+  --green: #15803d;
+  --green-bg: #dcfce7;
+  --red: #b91c1c;
+  --red-bg: #fee2e2;
+  --red-border: #fca5a5;
+  --amber: #b45309;
+  --amber-bg: #fef3c7;
+  --gray-bg: #e2e8f0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'PingFang SC', 'Microsoft YaHei', 'Noto Sans CJK SC', system-ui, -apple-system,
+    'Segoe UI', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.app {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 20px 48px;
+}
+
+header h1 {
+  margin: 0 0 8px;
+  font-size: 26px;
+}
+
+header p {
+  margin: 0 0 20px;
+  color: var(--muted);
+  max-width: 880px;
+}
+
+main {
+  display: grid;
+  grid-template-columns: minmax(360px, 5fr) 6fr;
+  gap: 20px;
+  align-items: start;
+}
+
+@media (max-width: 960px) {
+  main {
+    grid-template-columns: 1fr;
+  }
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px 18px;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.05);
+}
+
+.card h2 {
+  margin: 0 0 12px;
+  font-size: 16px;
+}
+
+.card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.card-head h2 {
+  margin: 0;
+}
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: flex-end;
+  margin-bottom: 10px;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+label.grow {
+  flex: 1;
+  min-width: 140px;
+}
+
+input,
+select {
+  font: inherit;
+  padding: 7px 10px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: #fff;
+  color: var(--text);
+  min-width: 0;
+}
+
+input:focus,
+select:focus {
+  outline: 2px solid rgba(37, 99, 235, 0.35);
+  border-color: var(--primary);
+}
+
+input[type='number'] {
+  width: 110px;
+}
+
+.btn {
+  font: inherit;
+  padding: 7px 14px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: #fff;
+  color: var(--text);
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.btn:hover {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+}
+
+.btn.primary {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+}
+
+.btn.primary:hover {
+  background: var(--primary-dark);
+}
+
+.btn.danger {
+  color: var(--red);
+  border-color: var(--red-border);
+  padding: 3px 10px;
+  font-size: 13px;
+}
+
+.btn.danger:hover {
+  background: var(--red-bg);
+}
+
+.btn.ghost {
+  border: none;
+  color: var(--muted);
+  padding: 3px 8px;
+  font-size: 13px;
+}
+
+.btn.ghost:hover {
+  color: var(--red);
+  background: transparent;
+}
+
+.btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.hint {
+  margin: 6px 0 0;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.error {
+  margin: 8px 0 0;
+  font-size: 13px;
+  color: var(--red);
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.small {
+  font-size: 12px;
+}
+
+/* 约束列表 */
+.constraint-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.constraint-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #fbfdff;
+}
+
+.constraint-list li.highlight {
+  border-color: var(--red-border);
+  background: var(--red-bg);
+}
+
+.constraint-list .idx {
+  color: var(--muted);
+  font-size: 12px;
+  flex-shrink: 0;
+}
+
+.constraint-list .text {
+  flex: 1;
+  min-width: 0;
+}
+
+.constraint-list .tag {
+  flex-shrink: 0;
+  font-size: 12px;
+  color: var(--red);
+  border: 1px solid var(--red-border);
+  border-radius: 999px;
+  padding: 0 8px;
+  background: #fff;
+}
+
+/* 结果区 */
+.result {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.banner {
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-weight: 600;
+  border: 1px solid;
+}
+
+.banner.good {
+  color: var(--green);
+  background: var(--green-bg);
+  border-color: #86efac;
+}
+
+.banner.bad {
+  color: var(--red);
+  background: var(--red-bg);
+  border-color: var(--red-border);
+}
+
+/* 矛盾环 */
+.cycle-card {
+  border-color: var(--red-border);
+}
+
+.cycle-path {
+  list-style: none;
+  margin: 12px 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.cycle-node {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: #fff;
+  border: 2px solid var(--red-border);
+  font-weight: 600;
+}
+
+.cycle-node.back {
+  background: var(--red-bg);
+  border-style: dashed;
+}
+
+.cycle-edge {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: 4px 0 4px 18px;
+  padding-left: 14px;
+  border-left: 2px dashed var(--red-border);
+}
+
+.cycle-edge .arrow {
+  color: var(--red);
+  font-weight: 700;
+}
+
+.cycle-edge code {
+  background: var(--red-bg);
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-size: 13px;
+}
+
+.cycle-edge .src {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.cycle-sum {
+  margin: 8px 0 0;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: var(--red-bg);
+  color: var(--red);
+  font-size: 14px;
+}
+
+.cycle-sum code {
+  font-weight: 700;
+}
+
+/* 时间窗表格 */
+table.windows {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+table.windows th,
+table.windows td {
+  text-align: left;
+  padding: 9px 10px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+
+table.windows th {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 600;
+  background: #f8fafc;
+}
+
+.event-name {
+  font-weight: 600;
+}
+
+.anchor-row {
+  background: #eff6ff;
+}
+
+.unknown-row {
+  background: #fafafa;
+}
+
+.badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.badge.anchor {
+  color: var(--primary-dark);
+  background: #dbeafe;
+}
+
+.badge.ok {
+  color: var(--green);
+  background: var(--green-bg);
+}
+
+.badge.partial {
+  color: var(--amber);
+  background: var(--amber-bg);
+}
+
+.badge.unknown {
+  color: var(--muted);
+  background: var(--gray-bg);
+}
+
+footer {
+  margin-top: 28px;
+  color: var(--muted);
+  font-size: 13px;
+  text-align: center;
+}
